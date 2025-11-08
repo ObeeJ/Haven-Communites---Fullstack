@@ -10,7 +10,7 @@ import imgAvatar1 from "figma:asset/208f27328cc76b16a5f2b9566cc87af5adcf3983.png
 import imgAvatar2 from "figma:asset/f616bdf74826655ce23dd443ed3b5dc09aec80d7.png";
 import imgContent1 from "figma:asset/26d2fceb73e66695fbe106bfc5490e82c6f2f378.png";
 import logoImage from "figma:asset/3eada838a8a55b948f7379c648ac717c0e7f47c9.png";
-import Logo from "../components/Logo";
+import { WhatsAppButton } from "../components/common/WhatsAppButton";
 
 function Frame1000003793({ onClick }: { onClick?: () => void }) {
   return (
@@ -98,13 +98,13 @@ function Navigation({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'co
 function Content({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="basis-0 content-stretch flex grow items-center justify-between min-h-px min-w-px relative shrink-0" data-name="Content">
-      <Logo onClick={() => onNavigate?.('home')} />
+      <Frame1000003793 onClick={() => onNavigate?.('home')} />
       <Navigation onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Container({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function Container({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex items-center justify-between relative shrink-0 w-full max-w-[1320px] px-[32px]" data-name="Container">
       <Content onNavigate={onNavigate} />
@@ -112,7 +112,7 @@ function Container({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'con
   );
 }
 
-function Header({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function Header({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="absolute content-stretch flex flex-col h-[112px] items-center justify-center left-0 right-0 top-0" data-name="Header">
       <Container onNavigate={onNavigate} />
@@ -120,7 +120,7 @@ function Header({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contac
   );
 }
 
-function DropdownHeaderNavigation({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function DropdownHeaderNavigation({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="h-[112px] relative shrink-0 w-full" data-name="Dropdown header navigation">
       <Header onNavigate={onNavigate} />
@@ -128,7 +128,7 @@ function DropdownHeaderNavigation({ onNavigate }: { onNavigate?: (page: 'home' |
   );
 }
 
-function Frame2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function Frame2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[10px] h-[112px] items-start relative shrink-0 w-full">
       <DropdownHeaderNavigation onNavigate={onNavigate} />
@@ -136,7 +136,7 @@ function Frame2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contac
   );
 }
 
-function Frame4({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function Frame4({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="bg-[rgba(0,0,0,0.4)] content-stretch flex flex-col gap-[10px] h-[80px] items-start relative shrink-0 w-full z-[2]">
       <Frame2 onNavigate={onNavigate} />
@@ -161,8 +161,19 @@ function Frame1000003788() {
 }
 
 function CompanyAndQuote() {
+  const handleScroll = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="content-stretch flex flex-col gap-[12px] items-center relative shrink-0 w-full" data-name="Company and quote">
+    <div
+      className="content-stretch flex flex-col gap-[12px] items-center relative shrink-0 w-full cursor-pointer hover:opacity-80 transition-opacity"
+      data-name="Company and quote"
+      onClick={handleScroll}
+    >
       <p className="font-['Avenir:Medium',_sans-serif] leading-[32px] not-italic relative shrink-0 text-[24px] text-center text-white w-full">Scroll Down</p>
     </div>
   );
@@ -211,7 +222,7 @@ function Frame3() {
   );
 }
 
-function HeroHeaderSection({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact') => void }) {
+function HeroHeaderSection({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex flex-col h-[683px] isolate items-center overflow-clip relative shrink-0 w-full z-[11]" data-name="Hero header section">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
@@ -290,9 +301,9 @@ function TextAndAction1() {
   );
 }
 
-function Card() {
+function Card({ onNavigate, projectId = '1' }: { onNavigate?: (page: string) => void; projectId?: string } = {}) {
   return (
-    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px]" data-name="Card">
+    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px] cursor-pointer hover:shadow-lg transition-shadow" data-name="Card" onClick={() => onNavigate?.(`project-${projectId}`)}>
       <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none rounded-[8px] size-full" src={imgCard} />
       <TextAndAction1 />
     </div>
@@ -345,9 +356,9 @@ function TextAndAction2() {
   );
 }
 
-function Card1() {
+function Card1({ onNavigate, projectId = '2' }: { onNavigate?: (page: string) => void; projectId?: string } = {}) {
   return (
-    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px]" data-name="Card">
+    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px] cursor-pointer hover:shadow-lg transition-shadow" data-name="Card" onClick={() => onNavigate?.(`project-${projectId}`)}>
       <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none rounded-[8px] size-full" src={imgCard1} />
       <TextAndAction2 />
     </div>
@@ -400,9 +411,9 @@ function TextAndAction3() {
   );
 }
 
-function Card2() {
+function Card2({ onNavigate, projectId = '3' }: { onNavigate?: (page: string) => void; projectId?: string } = {}) {
   return (
-    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px]" data-name="Card">
+    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px] cursor-pointer hover:shadow-lg transition-shadow" data-name="Card" onClick={() => onNavigate?.(`project-${projectId}`)}>
       <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none rounded-[8px] size-full" src={imgCard2} />
       <TextAndAction3 />
     </div>
@@ -455,22 +466,22 @@ function TextAndAction4() {
   );
 }
 
-function Card3() {
+function Card3({ onNavigate, projectId = '4' }: { onNavigate?: (page: string) => void; projectId?: string } = {}) {
   return (
-    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px]" data-name="Card">
+    <div className="box-border content-stretch flex flex-col gap-[24px] h-[504px] items-start justify-end p-[24px] relative rounded-[8px] shrink-0 w-[384px] cursor-pointer hover:shadow-lg transition-shadow" data-name="Card" onClick={() => onNavigate?.(`project-${projectId}`)}>
       <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none rounded-[8px] size-full" src={imgCard3} />
       <TextAndAction4 />
     </div>
   );
 }
 
-function CaseStudies() {
+function CaseStudies({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
   return (
     <div className="content-stretch flex gap-[32px] items-start relative shrink-0" data-name="Case studies">
-      <Card />
-      <Card1 />
-      <Card2 />
-      <Card3 />
+      <Card onNavigate={onNavigate} projectId="1" />
+      <Card1 onNavigate={onNavigate} projectId="2" />
+      <Card2 onNavigate={onNavigate} projectId="3" />
+      <Card3 onNavigate={onNavigate} projectId="4" />
     </div>
   );
 }
@@ -489,8 +500,11 @@ function ArrowLeft() {
 
 function TestiomonialCarouselArrow() {
   return (
-    <div className="content-stretch flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 size-[56px]" data-name="_Testiomonial carousel arrow">
-      <div aria-hidden="true" className="absolute border border-[#e9eaeb] border-solid inset-0 pointer-events-none rounded-[28px]" />
+    <div
+      className="box-border flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 cursor-pointer transition-colors hover:bg-gray-50"
+      data-name="_Testiomonial carousel arrow"
+      style={{ width: '56px', height: '56px', border: '1px solid #E9EAEB' }}
+    >
       <ArrowLeft />
     </div>
   );
@@ -510,8 +524,11 @@ function ArrowRight() {
 
 function TestiomonialCarouselArrow1() {
   return (
-    <div className="content-stretch flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 size-[56px]" data-name="_Testiomonial carousel arrow">
-      <div aria-hidden="true" className="absolute border border-[#e9eaeb] border-solid inset-0 pointer-events-none rounded-[28px]" />
+    <div
+      className="box-border flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 cursor-pointer transition-colors hover:bg-gray-50"
+      data-name="_Testiomonial carousel arrow"
+      style={{ width: '56px', height: '56px', border: '1px solid #E9EAEB' }}
+    >
       <ArrowRight />
     </div>
   );
@@ -526,32 +543,32 @@ function Arrows() {
   );
 }
 
-function Content2() {
+function Content2({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
   return (
     <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0" data-name="Content">
-      <CaseStudies />
+      <CaseStudies onNavigate={onNavigate} />
       <Arrows />
     </div>
   );
 }
 
-function Container2() {
+function Container2({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Container">
       <div className="max-w-inherit size-full">
         <div className="box-border content-stretch flex flex-col gap-[64px] items-start max-w-inherit px-[32px] py-0 relative w-full">
           <Content1 />
-          <Content2 />
+          <Content2 onNavigate={onNavigate} />
         </div>
       </div>
     </div>
   );
 }
 
-function TestimonialSection() {
+function TestimonialSection({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
   return (
     <div className="bg-white box-border content-stretch flex flex-col gap-[64px] items-center overflow-clip px-0 py-[96px] relative shrink-0 w-full z-10" data-name="Testimonial section">
-      <Container2 />
+      <Container2 onNavigate={onNavigate} />
     </div>
   );
 }
@@ -1236,9 +1253,9 @@ function HeadingAndSupportingText4() {
 
 function CompanyAndQuote5() {
   return (
-    <div className="content-stretch flex flex-col gap-[12px] items-center relative shrink-0 w-full" data-name="Company and quote">
-      <p className="font-['Avenir:Medium',_sans-serif] leading-[32px] not-italic relative shrink-0 text-[24px] text-center text-white w-full">Talk to Sales</p>
-    </div>
+    <WhatsAppButton message="Are you looking to buy land, build a home or invest with us?" variant="outline" size="lg" className="!text-white !border-white hover:!bg-white/10">
+      Talk to Sales
+    </WhatsAppButton>
   );
 }
 
@@ -1669,7 +1686,7 @@ export default function Desktop({ onNavigate }: { onNavigate?: (page: 'home' | '
   return (
     <div className="bg-white content-stretch flex flex-col isolate items-center relative size-full" data-name="Desktop">
       <HeroHeaderSection onNavigate={onNavigate} />
-      <TestimonialSection />
+      <TestimonialSection onNavigate={onNavigate} />
       <FeaturesSection />
       <TestimonialSection1 />
       <SectionDivider />

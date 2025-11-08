@@ -269,8 +269,11 @@ function ArrowLeft() {
 
 function TestiomonialCarouselArrow() {
   return (
-    <div className="content-stretch flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 size-[56px]" data-name="_Testiomonial carousel arrow">
-      <div aria-hidden="true" className="absolute border border-[#e9eaeb] border-solid inset-0 pointer-events-none rounded-[28px]" />
+    <div
+      className="box-border flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 cursor-pointer transition-colors hover:bg-gray-50"
+      data-name="_Testiomonial carousel arrow"
+      style={{ width: '56px', height: '56px', border: '1px solid #E9EAEB' }}
+    >
       <ArrowLeft />
     </div>
   );
@@ -290,8 +293,11 @@ function ArrowRight() {
 
 function TestiomonialCarouselArrow1() {
   return (
-    <div className="content-stretch flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 size-[56px]" data-name="_Testiomonial carousel arrow">
-      <div aria-hidden="true" className="absolute border border-[#e9eaeb] border-solid inset-0 pointer-events-none rounded-[28px]" />
+    <div
+      className="box-border flex gap-[12px] items-center justify-center relative rounded-[28px] shrink-0 cursor-pointer transition-colors hover:bg-gray-50"
+      data-name="_Testiomonial carousel arrow"
+      style={{ width: '56px', height: '56px', border: '1px solid #E9EAEB' }}
+    >
       <ArrowRight />
     </div>
   );

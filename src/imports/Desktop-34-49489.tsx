@@ -8,27 +8,12 @@ import imgImage4 from "figma:asset/9f4ea61beb99ae8c2da093d59eccf06f640e117f.png"
 import imgImage5 from "figma:asset/ec3b79fff1564d645f4f2bda89407b5d61d9afd9.png";
 import imgImage6 from "figma:asset/54e0943ca661c94f801320e0a56b7ad7c9f5f2c3.png";
 import imgImage7 from "figma:asset/ba1ddf4cdff400161fdff3d4a651265bb53152a4.png";
-import Logo from "../components/Logo";
-
-function Group1000003696() {
-  return (
-    <div className="h-[21.72px] relative shrink-0 w-[48.49px]">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49 22">
-        <g id="Group 1000003696">
-          <path d={svgPaths.p27cf2e80} fill="var(--fill-0, white)" id="Vector 2" />
-          <path d={svgPaths.p14e48780} fill="var(--fill-0, white)" id="Vector 1" />
-        </g>
-      </svg>
-    </div>
-  );
-}
+import logoImage from "figma:asset/3eada838a8a55b948f7379c648ac717c0e7f47c9.png";
 
 function Frame1000003793({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex flex-col gap-[4.5px] items-center relative shrink-0 w-[105px] cursor-pointer" onClick={onClick}>
-      <Group1000003696 />
-      <p className="font-['Times_New_Roman:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[24px] text-white w-[min-content]">H A V E N</p>
-      <p className="font-['Microsoft_Sans_Serif:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[8.25px] text-center text-white w-[min-content]">C O M M U N I T I E S</p>
+    <div className="content-stretch flex items-center relative shrink-0 cursor-pointer" onClick={onClick}>
+      <img src={logoImage} alt="Haven Communities" className="h-auto w-[105px]" />
     </div>
   );
 }
@@ -103,7 +88,7 @@ function Navigation1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'c
 function Content2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="basis-0 content-stretch flex grow items-center justify-between min-h-px min-w-px relative shrink-0" data-name="Content">
-      <Logo onClick={() => onNavigate?.('home')} />
+      <Frame1000003793 onClick={() => onNavigate?.('home')} />
       <Navigation1 onNavigate={onNavigate} />
     </div>
   );
@@ -111,7 +96,7 @@ function Content2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'cont
 
 function Container1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-[1320px]" data-name="Container">
+    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full max-w-[1320px] px-[32px]" data-name="Container">
       <Content2 onNavigate={onNavigate} />
     </div>
   );
@@ -178,13 +163,13 @@ function InputWithLabel() {
   );
 }
 
-function InputField() {
+function InputField({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="basis-0 content-stretch flex flex-col gap-[6px] grow items-start min-h-px min-w-px relative shrink-0" data-name="Input field">
       <InputWithLabel />
-      <p className="font-['Avenir:Regular',_sans-serif] leading-[20px] not-italic relative shrink-0 text-[0px] text-[14px] text-white w-full">
+      <p className="font-['Avenir:Regular',_sans-serif] leading-[20px] not-italic relative shrink-0 text-[14px] text-white w-full">
         <span>{`We care about your data in our `}</span>
-        <span className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid underline">privacy policy</span>.
+        <span className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid underline cursor-pointer hover:opacity-80" onClick={() => onNavigate?.('privacyPolicy')}>privacy policy</span>.
       </p>
     </div>
   );
@@ -198,9 +183,9 @@ function TextPadding7() {
   );
 }
 
-function ButtonsButton6() {
+function ButtonsButton6({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-[#155eef] relative rounded-[234px] shrink-0" data-name="Buttons/Button">
+    <div className="bg-[#155eef] relative rounded-[234px] shrink-0 cursor-pointer hover:bg-[#1347d4] transition-colors" data-name="Buttons/Button" onClick={onClick}>
       <div className="box-border content-stretch flex gap-[6px] items-center justify-center overflow-clip px-[18px] py-[12px] relative rounded-[inherit]">
         <TextPadding7 />
       </div>
@@ -210,20 +195,20 @@ function ButtonsButton6() {
   );
 }
 
-function EmailCapture() {
+function EmailCapture({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
     <div className="content-stretch flex gap-[16px] items-start max-w-[480px] relative shrink-0 w-full" data-name="Email capture">
-      <InputField />
-      <ButtonsButton6 />
+      <InputField onNavigate={onNavigate} />
+      <ButtonsButton6 onClick={onSubscribe} />
     </div>
   );
 }
 
-function HeadingAndAction() {
+function HeadingAndAction({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex flex-col gap-[32px] grow items-start max-w-[768px] min-h-px min-w-[480px] relative shrink-0" data-name="Heading and action">
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[60px] not-italic relative shrink-0 text-[48px] text-white tracking-[-0.96px] w-full">Resource library</p>
-      <EmailCapture />
+      <EmailCapture onNavigate={onNavigate} onSubscribe={onSubscribe} />
     </div>
   );
 }
@@ -236,93 +221,113 @@ function Content4() {
   );
 }
 
-function HeadingAndSupportingText() {
+function HeadingAndSupportingText({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
     <div className="content-stretch flex gap-[32px] items-start relative shrink-0 w-full" data-name="Heading and supporting text">
-      <HeadingAndAction />
+      <HeadingAndAction onNavigate={onNavigate} onSubscribe={onSubscribe} />
       <Content4 />
     </div>
   );
 }
 
-function Container2() {
+function Container2({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
-    <div className="absolute box-border content-stretch flex flex-col gap-[12px] items-start left-[80px] max-w-[1280px] px-[32px] py-0 top-[151px] w-[1280px]" data-name="Container">
-      <HeadingAndSupportingText />
+    <div className="absolute box-border content-stretch flex flex-col gap-[12px] items-start left-0 right-0 mx-auto max-w-[1280px] px-[32px] md:px-[64px] lg:px-[112px] py-0 top-[151px] w-full" data-name="Container">
+      <HeadingAndSupportingText onNavigate={onNavigate} onSubscribe={onSubscribe} />
     </div>
   );
 }
 
-function Frame3() {
+function Frame3({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
-    <div className="h-[603px] relative shrink-0 w-[1440px] z-[1]">
-      <div className="absolute bg-[rgba(0,0,0,0.4)] h-[683px] left-0 top-0 w-[1440px]" />
-      <Container2 />
+    <div className="h-[603px] relative shrink-0 w-full z-[1]">
+      <div className="absolute bg-[rgba(0,0,0,0.4)] h-[683px] left-0 top-0 w-full" />
+      <Container2 onNavigate={onNavigate} onSubscribe={onSubscribe} />
     </div>
   );
 }
 
-function HeroHeaderSection({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
+function HeroHeaderSection({ onNavigate, onSubscribe }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onSubscribe?: () => void }) {
   return (
-    <div className="content-stretch flex flex-col h-[683px] isolate items-center overflow-clip relative shrink-0 w-[1440px]" data-name="Hero header section">
+    <div className="content-stretch flex flex-col h-[683px] isolate items-center overflow-clip relative shrink-0 w-full" data-name="Hero header section">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <div className="absolute bg-white inset-0" />
         <img alt="" className="absolute max-w-none object-50%-50% object-cover size-full" src={imgHeroHeaderSection} />
       </div>
       <Frame4 onNavigate={onNavigate} />
-      <Frame3 />
+      <Frame3 onNavigate={onNavigate} onSubscribe={onSubscribe} />
     </div>
   );
 }
 
-function TabButtonBase() {
+function TabButtonBase({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-neutral-50 box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0" data-name="_Tab button base">
+    <div
+      className="bg-neutral-50 box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0 cursor-pointer hover:bg-neutral-100 transition-colors"
+      data-name="_Tab button base"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#414651] text-[16px] text-nowrap whitespace-pre">View all</p>
     </div>
   );
 }
 
-function TabButtonBase1() {
+function TabButtonBase1({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0" data-name="_Tab button base">
+    <div
+      className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0 cursor-pointer hover:bg-neutral-50 transition-colors"
+      data-name="_Tab button base"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Land</p>
     </div>
   );
 }
 
-function TabButtonBase2() {
+function TabButtonBase2({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0" data-name="_Tab button base">
+    <div
+      className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0 cursor-pointer hover:bg-neutral-50 transition-colors"
+      data-name="_Tab button base"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Homes</p>
     </div>
   );
 }
 
-function TabButtonBase3() {
+function TabButtonBase3({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0" data-name="_Tab button base">
+    <div
+      className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0 cursor-pointer hover:bg-neutral-50 transition-colors"
+      data-name="_Tab button base"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Construction</p>
     </div>
   );
 }
 
-function TabButtonBase4() {
+function TabButtonBase4({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0" data-name="_Tab button base">
+    <div
+      className="box-border content-stretch flex gap-[8px] h-[44px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[6px] shrink-0 cursor-pointer hover:bg-neutral-50 transition-colors"
+      data-name="_Tab button base"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Investment</p>
     </div>
   );
 }
 
-function HorizontalTabs() {
+function HorizontalTabs({ onViewAll, onLand, onHomes, onConstruction, onInvestment }: { onViewAll?: () => void; onLand?: () => void; onHomes?: () => void; onConstruction?: () => void; onInvestment?: () => void }) {
   return (
     <div className="content-stretch flex gap-[4px] items-center relative shrink-0 w-full" data-name="Horizontal tabs">
-      <TabButtonBase />
-      <TabButtonBase1 />
-      <TabButtonBase2 />
-      <TabButtonBase3 />
-      <TabButtonBase4 />
+      <TabButtonBase onClick={onViewAll} />
+      <TabButtonBase1 onClick={onLand} />
+      <TabButtonBase2 onClick={onHomes} />
+      <TabButtonBase3 onClick={onConstruction} />
+      <TabButtonBase4 onClick={onInvestment} />
     </div>
   );
 }
@@ -416,9 +421,9 @@ function Content6({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image />
-      <Content6 onClick={() => onNavigate?.('blogDetail')} />
+      <Content6 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -512,9 +517,9 @@ function Content8({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image1 />
-      <Content8 onClick={() => onNavigate?.('blogDetail')} />
+      <Content8 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -608,9 +613,9 @@ function Content10({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image2 />
-      <Content10 onClick={() => onNavigate?.('blogDetail')} />
+      <Content10 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -704,9 +709,9 @@ function Content12({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard3({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image3 />
-      <Content12 onClick={() => onNavigate?.('blogDetail')} />
+      <Content12 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -800,9 +805,9 @@ function Content14({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard4({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image4 />
-      <Content14 onClick={() => onNavigate?.('blogDetail')} />
+      <Content14 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -896,9 +901,9 @@ function Content16({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard5({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image5 />
-      <Content16 onClick={() => onNavigate?.('blogDetail')} />
+      <Content16 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -992,9 +997,9 @@ function Content18({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard6({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image6 />
-      <Content18 onClick={() => onNavigate?.('blogDetail')} />
+      <Content18 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -1088,9 +1093,9 @@ function Content20({ onClick }: { onClick?: () => void }) {
 
 function BlogPostCard7({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.('blogDetail')}>
+    <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start min-h-px min-w-[400px] relative shrink-0 cursor-pointer hover:opacity-90 transition-opacity" data-name="Blog post card" onClick={() => onNavigate?.(`blog-${blogId}`)}>
       <Image7 />
-      <Content20 onClick={() => onNavigate?.('blogDetail')} />
+      <Content20 onClick={() => onNavigate?.(`blog-${blogId}`)} />
     </div>
   );
 }
@@ -1099,13 +1104,13 @@ function Content21({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'con
   return (
     <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-name="Content">
       <BlogPostCard onNavigate={onNavigate} />
-      <BlogPostCard1 onNavigate={onNavigate} />
-      <BlogPostCard2 onNavigate={onNavigate} />
-      <BlogPostCard3 onNavigate={onNavigate} />
-      <BlogPostCard4 onNavigate={onNavigate} />
-      <BlogPostCard5 onNavigate={onNavigate} />
-      <BlogPostCard6 onNavigate={onNavigate} />
-      <BlogPostCard7 onNavigate={onNavigate} />
+      <BlogPostCard1 onNavigate={onNavigate} blogId="2" />
+      <BlogPostCard2 onNavigate={onNavigate} blogId="3" />
+      <BlogPostCard3 onNavigate={onNavigate} blogId="4" />
+      <BlogPostCard4 onNavigate={onNavigate} blogId="5" />
+      <BlogPostCard5 onNavigate={onNavigate} blogId="6" />
+      <BlogPostCard6 onNavigate={onNavigate} blogId="7" />
+      <BlogPostCard7 onNavigate={onNavigate} blogId="8" />
     </div>
   );
 }
@@ -1130,9 +1135,9 @@ function TextPadding8() {
   );
 }
 
-function ButtonsButton15() {
+function ButtonsButton15({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-white relative rounded-[8px] shrink-0" data-name="Buttons/Button">
+    <div className="bg-white relative rounded-[8px] shrink-0 cursor-pointer hover:bg-gray-50 transition-colors" data-name="Buttons/Button" onClick={onClick}>
       <div className="box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[inherit]">
         <ArrowLeft />
         <TextPadding8 />
@@ -1143,10 +1148,10 @@ function ButtonsButton15() {
   );
 }
 
-function ButtonWrap() {
+function ButtonWrap({ onPrevious }: { onPrevious?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex grow h-[36px] items-center min-h-px min-w-px relative shrink-0" data-name="Button wrap">
-      <ButtonsButton15 />
+      <ButtonsButton15 onClick={onPrevious} />
     </div>
   );
 }
@@ -1159,9 +1164,9 @@ function Content22() {
   );
 }
 
-function PaginationNumberBase() {
+function PaginationNumberBase({ onClick, isActive = true }: { onClick?: () => void; isActive?: boolean }) {
   return (
-    <div className="bg-neutral-50 overflow-clip relative rounded-[8px] shrink-0 size-[40px]" data-name="_Pagination number base">
+    <div className={`${isActive ? 'bg-neutral-50' : 'bg-white hover:bg-neutral-50'} overflow-clip relative rounded-[8px] shrink-0 size-[40px] cursor-pointer transition-colors`} data-name="_Pagination number base" onClick={onClick}>
       <Content22 />
     </div>
   );
@@ -1175,9 +1180,9 @@ function Content23() {
   );
 }
 
-function PaginationNumberBase1() {
+function PaginationNumberBase1({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="overflow-clip relative rounded-[8px] shrink-0 size-[40px]" data-name="_Pagination number base">
+    <div className="overflow-clip relative rounded-[8px] shrink-0 size-[40px] cursor-pointer hover:bg-neutral-50 transition-colors" data-name="_Pagination number base" onClick={onClick}>
       <Content23 />
     </div>
   );
@@ -1191,9 +1196,9 @@ function Content24() {
   );
 }
 
-function PaginationNumberBase2() {
+function PaginationNumberBase2({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="overflow-clip relative rounded-[8px] shrink-0 size-[40px]" data-name="_Pagination number base">
+    <div className="overflow-clip relative rounded-[8px] shrink-0 size-[40px] cursor-pointer hover:bg-neutral-50 transition-colors" data-name="_Pagination number base" onClick={onClick}>
       <Content24 />
     </div>
   );
@@ -1263,12 +1268,12 @@ function PaginationNumberBase6() {
   );
 }
 
-function PaginationNumbers() {
+function PaginationNumbers({ onPageClick }: { onPageClick?: (page: number) => void }) {
   return (
     <div className="content-stretch flex gap-[2px] items-start relative shrink-0" data-name="Pagination numbers">
-      <PaginationNumberBase />
-      <PaginationNumberBase1 />
-      <PaginationNumberBase2 />
+      <PaginationNumberBase onClick={() => onPageClick?.(1)} isActive={true} />
+      <PaginationNumberBase1 onClick={() => onPageClick?.(2)} />
+      <PaginationNumberBase2 onClick={() => onPageClick?.(3)} />
       <PaginationNumberBase3 />
       <PaginationNumberBase4 />
       <PaginationNumberBase5 />
@@ -1297,9 +1302,9 @@ function ArrowRight() {
   );
 }
 
-function ButtonsButton16() {
+function ButtonsButton16({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-white relative rounded-[8px] shrink-0" data-name="Buttons/Button">
+    <div className="bg-white relative rounded-[8px] shrink-0 cursor-pointer hover:bg-gray-50 transition-colors" data-name="Buttons/Button" onClick={onClick}>
       <div className="box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[inherit]">
         <TextPadding9 />
         <ArrowRight />
@@ -1310,52 +1315,52 @@ function ButtonsButton16() {
   );
 }
 
-function ButtonWrap1() {
+function ButtonWrap1({ onNext }: { onNext?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex grow h-[36px] items-center justify-end min-h-px min-w-px relative shrink-0" data-name="Button wrap">
-      <ButtonsButton16 />
+      <ButtonsButton16 onClick={onNext} />
     </div>
   );
 }
 
-function Pagination() {
+function Pagination({ onPrevious, onNext, onPageClick }: { onPrevious?: () => void; onNext?: () => void; onPageClick?: (page: number) => void }) {
   return (
     <div className="box-border content-stretch flex gap-[20px] items-center justify-center pb-0 pt-[20px] px-0 relative shrink-0 w-full" data-name="Pagination">
       <div aria-hidden="true" className="absolute border-[#e9eaeb] border-[1px_0px_0px] border-solid bottom-0 left-0 pointer-events-none right-0 top-[-1px]" />
-      <ButtonWrap />
-      <PaginationNumbers />
-      <ButtonWrap1 />
+      <ButtonWrap onPrevious={onPrevious} />
+      <PaginationNumbers onPageClick={onPageClick} />
+      <ButtonWrap1 onNext={onNext} />
     </div>
   );
 }
 
-function Container3({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
+function Container3({ onNavigate, onViewAll, onLand, onHomes, onConstruction, onInvestment, onPrevious, onNext, onPageClick }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onViewAll?: () => void; onLand?: () => void; onHomes?: () => void; onConstruction?: () => void; onInvestment?: () => void; onPrevious?: () => void; onNext?: () => void; onPageClick?: (page: number) => void }) {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Container">
       <div className="max-w-inherit size-full">
         <div className="box-border content-stretch flex flex-col gap-[48px] items-start max-w-inherit px-[32px] py-0 relative w-full">
-          <HorizontalTabs />
+          <HorizontalTabs onViewAll={onViewAll} onLand={onLand} onHomes={onHomes} onConstruction={onConstruction} onInvestment={onInvestment} />
           <Content21 onNavigate={onNavigate} />
-          <Pagination />
+          <Pagination onPrevious={onPrevious} onNext={onNext} onPageClick={onPageClick} />
         </div>
       </div>
     </div>
   );
 }
 
-function Section({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
+function Section({ onNavigate, onViewAll, onLand, onHomes, onConstruction, onInvestment, onPrevious, onNext, onPageClick }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onViewAll?: () => void; onLand?: () => void; onHomes?: () => void; onConstruction?: () => void; onInvestment?: () => void; onPrevious?: () => void; onNext?: () => void; onPageClick?: (page: number) => void }) {
   return (
     <div className="box-border content-stretch flex flex-col gap-[64px] items-center px-0 py-[96px] relative shrink-0 w-full" data-name="Section">
-      <Container3 onNavigate={onNavigate} />
+      <Container3 onNavigate={onNavigate} onViewAll={onViewAll} onLand={onLand} onHomes={onHomes} onConstruction={onConstruction} onInvestment={onInvestment} onPrevious={onPrevious} onNext={onNext} onPageClick={onPageClick} />
     </div>
   );
 }
 
-function BlogPageHeader({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
+function BlogPageHeader({ onNavigate, onViewAll, onLand, onHomes, onConstruction, onInvestment, onSubscribe, onPrevious, onNext, onPageClick }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onViewAll?: () => void; onLand?: () => void; onHomes?: () => void; onConstruction?: () => void; onInvestment?: () => void; onSubscribe?: () => void; onPrevious?: () => void; onNext?: () => void; onPageClick?: (page: number) => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col items-center overflow-clip relative shrink-0 w-full z-[6]" data-name="Blog page header">
-      <HeroHeaderSection onNavigate={onNavigate} />
-      <Section onNavigate={onNavigate} />
+      <HeroHeaderSection onNavigate={onNavigate} onSubscribe={onSubscribe} />
+      <Section onNavigate={onNavigate} onViewAll={onViewAll} onLand={onLand} onHomes={onHomes} onConstruction={onConstruction} onInvestment={onInvestment} onPrevious={onPrevious} onNext={onNext} onPageClick={onPageClick} />
     </div>
   );
 }
@@ -1782,10 +1787,10 @@ function Footer({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contac
   );
 }
 
-export default function Desktop({ onNavigate, onBlogClick }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onBlogClick?: () => void }) {
+export default function BlogPage({ onNavigate, onBlogClick, onViewAll, onLand, onHomes, onConstruction, onInvestment, onSubscribe, onPrevious, onNext, onPageClick }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onBlogClick?: () => void; onViewAll?: () => void; onLand?: () => void; onHomes?: () => void; onConstruction?: () => void; onInvestment?: () => void; onSubscribe?: () => void; onPrevious?: () => void; onNext?: () => void; onPageClick?: (page: number) => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col isolate items-center relative size-full" data-name="Desktop">
-      <BlogPageHeader onNavigate={onNavigate} />
+      <BlogPageHeader onNavigate={onNavigate} onViewAll={onViewAll} onLand={onLand} onHomes={onHomes} onConstruction={onConstruction} onInvestment={onInvestment} onSubscribe={onSubscribe} onPrevious={onPrevious} onNext={onNext} onPageClick={onPageClick} />
       <SectionDivider />
       <SectionDivider1 />
       <Footer onNavigate={onNavigate} />

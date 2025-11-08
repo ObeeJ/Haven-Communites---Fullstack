@@ -1,0 +1,112 @@
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Binaries
+server
+server.exe
+bin/
+dist/
+*.app
+*.so
+*.dylib
+
+# Dependencies
+vendor/
+go.sum
+
+# Testing
+coverage.out
+coverage.html
+*.test
+*.prof
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+build/
+out/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+db/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Air - live reload
+.air.toml
+tmp/
+
+# Backup files
+*.backup
+*.bak
+*.swp
+*.~
+
+# Node modules (if using npm/yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Docker volumes and data
+postgres_data/
+*.pem
+*.key
+
+# IDE settings
+*.sublime-project
+
+# Python (if using any)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Jetbrains
+*.iml
+.gradle
+.gradletasknamecache
+
+# Documentation
+docs/generated/
+api-docs/
+
+# Local testing
+test-results/
+*.out

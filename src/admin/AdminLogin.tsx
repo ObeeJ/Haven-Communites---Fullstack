@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import svgPathsDesktop from "../imports/svg-7u8mfco8ir";
 import svgPathsMobile from "../imports/svg-5lzinfg8le";
 
@@ -62,12 +62,12 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   // Check screen size on mount and window resize
-  useState(() => {
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  });
+  }, []);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

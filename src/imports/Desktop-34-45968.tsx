@@ -3,167 +3,152 @@ import imgImage from "figma:asset/2e216a667b6c8f15de9b963a967f9c53aaac940e.png";
 import imgBlogPostCard from "figma:asset/ded0a5ed5bfb07fb361f264ea0c88b184e32a36a.png";
 import imgImage1 from "figma:asset/43c7799234d275b8b57ca1b26235659d44d23dba.png";
 import imgImage2 from "figma:asset/1df45d321d94faf7238fbcae0c4f616df9019203.png";
-import Logo from "../components/Logo";
+import logoImage from "figma:asset/3eada838a8a55b948f7379c648ac717c0e7f47c9.png";
 
-function Group1000003696() {
+function Frame1000003793({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="h-[21.72px] relative shrink-0 w-[48.49px]">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49 22">
-        <g id="Group 1000003696">
-          <path d={svgPaths.p27cf2e80} fill="var(--fill-0, #155EEF)" id="Vector 2" />
-          <path d={svgPaths.p14e48780} fill="var(--fill-0, #155EEF)" id="Vector 1" />
-        </g>
-      </svg>
+    <div className="content-stretch flex items-center relative shrink-0 cursor-pointer" onClick={onClick}>
+      <img src={logoImage} alt="Haven Communities" className="h-auto w-[105px]" />
     </div>
   );
 }
 
-function Frame1000003793() {
+function ButtonsButton2({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex flex-col gap-[4.5px] items-center relative shrink-0 w-[105px]">
-      <Group1000003696 />
-      <p className="font-['Times_New_Roman:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[#155eef] text-[24px] w-[min-content]">H A V E N</p>
-      <p className="font-['Microsoft_Sans_Serif:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[#155eef] text-[8.25px] text-center w-[min-content]">C O M M U N I T I E S</p>
-    </div>
-  );
-}
-
-function ButtonsButton2() {
-  return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0" data-name="Buttons/Button">
+    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0 cursor-pointer" data-name="Buttons/Button" onClick={onClick}>
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">About Us</p>
     </div>
   );
 }
 
-function DropdownHeaderNavigationTrigger() {
+function DropdownHeaderNavigationTrigger({ onClick }: { onClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col items-center relative shrink-0" data-name="_Dropdown header navigation trigger">
-      <ButtonsButton2 />
+      <ButtonsButton2 onClick={onClick} />
     </div>
   );
 }
 
-function ButtonsButton3() {
+function ButtonsButton3({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0" data-name="Buttons/Button">
+    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0 cursor-pointer" data-name="Buttons/Button" onClick={onClick}>
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Projects</p>
     </div>
   );
 }
 
-function DropdownHeaderNavigationTrigger1() {
+function DropdownHeaderNavigationTrigger1({ onClick }: { onClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col items-center relative shrink-0" data-name="_Dropdown header navigation trigger">
-      <ButtonsButton3 />
+      <ButtonsButton3 onClick={onClick} />
     </div>
   );
 }
 
-function ButtonsButton4() {
+function ButtonsButton4({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0" data-name="Buttons/Button">
+    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0 cursor-pointer" data-name="Buttons/Button" onClick={onClick}>
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Contact</p>
     </div>
   );
 }
 
-function DropdownHeaderNavigationTrigger2() {
+function DropdownHeaderNavigationTrigger2({ onClick }: { onClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col items-center relative shrink-0" data-name="_Dropdown header navigation trigger">
-      <ButtonsButton4 />
+      <ButtonsButton4 onClick={onClick} />
     </div>
   );
 }
 
-function ButtonsButton5() {
+function ButtonsButton5({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0" data-name="Buttons/Button">
+    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0 cursor-pointer" data-name="Buttons/Button" onClick={onClick}>
       <p className="font-['Avenir:Heavy',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[#717680] text-[16px] text-nowrap whitespace-pre">Blog</p>
     </div>
   );
 }
 
-function Navigation1() {
+function Navigation1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex gap-[32px] items-center relative shrink-0" data-name="Navigation">
-      <DropdownHeaderNavigationTrigger />
-      <DropdownHeaderNavigationTrigger1 />
-      <DropdownHeaderNavigationTrigger2 />
-      <ButtonsButton5 />
+      <DropdownHeaderNavigationTrigger onClick={() => onNavigate?.('about')} />
+      <DropdownHeaderNavigationTrigger1 onClick={() => onNavigate?.('projects')} />
+      <DropdownHeaderNavigationTrigger2 onClick={() => onNavigate?.('contact')} />
+      <ButtonsButton5 onClick={() => onNavigate?.('blog')} />
     </div>
   );
 }
 
-function Content2() {
+function Content2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="basis-0 content-stretch flex grow items-center justify-between min-h-px min-w-px relative shrink-0" data-name="Content">
-      <Logo />
-      <Navigation1 />
+      <Frame1000003793 />
+      <Navigation1 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Container1() {
+function Container1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-[1320px]" data-name="Container">
-      <Content2 />
+    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full max-w-[1320px] px-[32px]" data-name="Container">
+      <Content2 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Header1() {
+function Header1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="absolute content-stretch flex flex-col h-[112px] items-center justify-center left-0 right-0 top-0" data-name="Header">
-      <Container1 />
+      <Container1 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function DropdownHeaderNavigation1() {
+function DropdownHeaderNavigation1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="h-[112px] relative shrink-0 w-full" data-name="Dropdown header navigation">
-      <Header1 />
+      <Header1 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Frame2() {
+function Frame2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="absolute content-stretch flex flex-col gap-[10px] h-[112px] items-start left-0 right-0 top-0">
-      <DropdownHeaderNavigation1 />
+      <DropdownHeaderNavigation1 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function DropdownHeaderNavigation2() {
+function DropdownHeaderNavigation2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="h-[80px] relative shrink-0 w-full" data-name="Dropdown header navigation">
-      <Frame2 />
+      <Frame2 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Frame3() {
+function Frame3({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[10px] h-[80px] items-start relative shrink-0 w-full">
-      <DropdownHeaderNavigation2 />
+      <DropdownHeaderNavigation2 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Frame4() {
+function Frame4({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[10px] h-[112px] items-start relative shrink-0 w-full">
-      <Frame3 />
+      <Frame3 onNavigate={onNavigate} />
     </div>
   );
 }
 
-function Frame5() {
+function Frame5({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="content-stretch flex flex-col gap-[10px] h-[80px] items-start relative shrink-0 w-[1440px] z-[2]">
-      <Frame4 />
+    <div className="content-stretch flex flex-col gap-[10px] h-[80px] items-start relative shrink-0 w-full z-[2]">
+      <Frame4 onNavigate={onNavigate} />
     </div>
   );
 }
@@ -285,10 +270,10 @@ function Section() {
   );
 }
 
-function HeroHeaderSection() {
+function HeroHeaderSection({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
-    <div className="bg-white content-stretch flex flex-col h-[844px] isolate items-center overflow-clip relative shrink-0 w-[1440px]" data-name="Hero header section">
-      <Frame5 />
+    <div className="bg-white content-stretch flex flex-col h-[683px] isolate items-center overflow-clip relative shrink-0 w-full" data-name="Hero header section">
+      <Frame5 onNavigate={onNavigate} />
       <Section />
     </div>
   );
@@ -306,19 +291,23 @@ function TextAndParagraph() {
   );
 }
 
-function ButtonsButton6() {
+function ButtonsButton6({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0" data-name="Buttons/Button">
+    <div
+      className="content-stretch flex gap-[4px] items-center justify-center overflow-clip relative shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+      data-name="Buttons/Button"
+      onClick={onClick}
+    >
       <p className="font-['Avenir:Medium',_sans-serif] leading-[20px] not-italic relative shrink-0 text-[#155eef] text-[14px] text-nowrap whitespace-pre">Read more</p>
     </div>
   );
 }
 
-function About() {
+function About({ onReadMore }: { onReadMore?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex flex-col gap-[16px] grow items-start max-w-[640px] min-h-px min-w-[480px] relative shrink-0" data-name="About">
       <TextAndParagraph />
-      <ButtonsButton6 />
+      <ButtonsButton6 onClick={onReadMore} />
     </div>
   );
 }
@@ -562,9 +551,13 @@ function TextPadding8() {
   );
 }
 
-function ButtonsButton13() {
+function ButtonsButton13({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="h-[48px] relative rounded-[234px] shrink-0 w-[224px]" data-name="Buttons/Button">
+    <div
+      className="h-[48px] relative rounded-[234px] shrink-0 w-[224px] cursor-pointer hover:opacity-80 transition-opacity"
+      data-name="Buttons/Button"
+      onClick={onClick}
+    >
       <div className="box-border content-stretch flex gap-[6px] h-[48px] items-center justify-center overflow-clip px-[18px] py-[12px] relative rounded-[inherit] w-[224px]">
         <TextPadding8 />
       </div>
@@ -574,49 +567,49 @@ function ButtonsButton13() {
   );
 }
 
-function Frame1000003791() {
+function Frame1000003791({ onDownloadBrochure }: { onDownloadBrochure?: () => void }) {
   return (
     <div className="content-stretch flex gap-[16px] items-start relative shrink-0">
       <ButtonsButton12 />
-      <ButtonsButton13 />
+      <ButtonsButton13 onClick={onDownloadBrochure} />
     </div>
   );
 }
 
-function About1() {
+function About1({ onDownloadBrochure }: { onDownloadBrochure?: () => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[400px]" data-name="About">
       <TextAndParagraph1 />
-      <Frame1000003791 />
+      <Frame1000003791 onDownloadBrochure={onDownloadBrochure} />
     </div>
   );
 }
 
-function Content5() {
+function Content5({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="content-start flex flex-wrap gap-[64px] items-start relative shrink-0 w-full" data-name="Content">
-      <About />
-      <About1 />
+      <About onReadMore={onReadMore} />
+      <About1 onDownloadBrochure={onDownloadBrochure} />
     </div>
   );
 }
 
-function Container3() {
+function Container3({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="relative shrink-0 w-full" data-name="Container">
       <div className="size-full">
         <div className="box-border content-stretch flex flex-col gap-[24px] items-start px-[32px] py-0 relative w-full">
-          <Content5 />
+          <Content5 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
         </div>
       </div>
     </div>
   );
 }
 
-function Section1() {
+function Section1({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Section">
-      <Container3 />
+      <Container3 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
     </div>
   );
 }
@@ -827,40 +820,40 @@ function Section2() {
   );
 }
 
-function Content11() {
+function Content11({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[48px] items-start relative shrink-0 w-full" data-name="Content">
-      <Section1 />
+      <Section1 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
       <Section2 />
     </div>
   );
 }
 
-function Container5() {
+function Container5({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Container">
       <div className="max-w-inherit size-full">
         <div className="box-border content-stretch flex flex-col gap-[48px] items-start max-w-inherit px-[32px] py-0 relative w-full">
-          <Content11 />
+          <Content11 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
         </div>
       </div>
     </div>
   );
 }
 
-function Section3() {
+function Section3({ onReadMore, onDownloadBrochure }: { onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="box-border content-stretch flex flex-col gap-[64px] items-center px-0 py-[96px] relative shrink-0 w-full" data-name="Section">
-      <Container5 />
+      <Container5 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
     </div>
   );
 }
 
-function BlogPageHeader() {
+function BlogPageHeader({ onNavigate, onReadMore, onDownloadBrochure }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col items-center overflow-clip relative shrink-0 w-full z-[6]" data-name="Blog page header">
-      <HeroHeaderSection />
-      <Section3 />
+      <HeroHeaderSection onNavigate={onNavigate} />
+      <Section3 onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
     </div>
   );
 }
@@ -1280,20 +1273,20 @@ function Container9() {
 
 function Footer() {
   return (
-    <div className="bg-[#155eef] box-border content-stretch flex flex-col gap-[64px] items-center overflow-clip pb-[48px] pt-[64px] px-0 relative shrink-0 w-[1440px] z-[1]" data-name="Footer">
+    <div className="bg-[#155eef] box-border content-stretch flex flex-col gap-[64px] items-center overflow-clip pb-[48px] pt-[64px] px-0 relative shrink-0 w-full z-[1]" data-name="Footer">
       <Container8 />
       <Container9 />
     </div>
   );
 }
 
-export default function Desktop() {
+export default function Desktop({ onNavigate, onReadMore, onDownloadBrochure }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'blogDetail' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onReadMore?: () => void; onDownloadBrochure?: () => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col isolate items-center relative size-full" data-name="Desktop">
-      <BlogPageHeader />
+      <BlogPageHeader onNavigate={onNavigate} onReadMore={onReadMore} onDownloadBrochure={onDownloadBrochure} />
       <SectionDivider />
       <SectionDivider1 />
-      <Footer />
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 }

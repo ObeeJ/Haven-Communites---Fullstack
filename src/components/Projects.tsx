@@ -6,6 +6,11 @@ interface ProjectsProps {
 }
 
 export function Projects({ onNavigate }: ProjectsProps) {
+  const handlePagination = {
+    onPrevious: () => console.log('Previous page'),
+    onNext: () => console.log('Next page'),
+  };
+
   return (
     <>
       {/* Mobile version - shown below 768px */}
@@ -15,7 +20,11 @@ export function Projects({ onNavigate }: ProjectsProps) {
       
       {/* Desktop version - shown at 768px and above */}
       <div className="hidden md:block">
-        <DesktopProjects onNavigate={onNavigate} />
+        <DesktopProjects 
+          onNavigate={onNavigate} 
+          onPreviousPage={handlePagination.onPrevious}
+          onNextPage={handlePagination.onNext}
+        />
       </div>
     </>
   );

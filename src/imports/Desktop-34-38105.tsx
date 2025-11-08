@@ -1,27 +1,12 @@
 import svgPaths from "./svg-dbvk7wn66u";
 import imgHeroHeaderSection from "figma:asset/c9b700eb89f009ae9d6e97eb3600221d82209851.png";
 import imgImage from "figma:asset/1df45d321d94faf7238fbcae0c4f616df9019203.png";
-import Logo from "../components/Logo";
-
-function Group1000003696() {
-  return (
-    <div className="h-[21.72px] relative shrink-0 w-[48.49px]">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49 22">
-        <g id="Group 1000003696">
-          <path d={svgPaths.p27cf2e80} fill="var(--fill-0, white)" id="Vector 2" />
-          <path d={svgPaths.p14e48780} fill="var(--fill-0, white)" id="Vector 1" />
-        </g>
-      </svg>
-    </div>
-  );
-}
+import logoImage from "figma:asset/3eada838a8a55b948f7379c648ac717c0e7f47c9.png";
 
 function Frame1000003793({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="content-stretch flex flex-col gap-[4.5px] items-center relative shrink-0 w-[105px] cursor-pointer" onClick={onClick}>
-      <Group1000003696 />
-      <p className="font-['Times_New_Roman:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[24px] text-white w-[min-content]">H A V E N</p>
-      <p className="font-['Microsoft_Sans_Serif:Regular',_sans-serif] leading-[18px] min-w-full not-italic relative shrink-0 text-[8.25px] text-center text-white w-[min-content]">C O M M U N I T I E S</p>
+    <div className="content-stretch flex items-center relative shrink-0 cursor-pointer" onClick={onClick}>
+      <img src={logoImage} alt="Haven Communities" className="h-auto w-[105px]" />
     </div>
   );
 }
@@ -96,7 +81,7 @@ function Navigation1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'c
 function Content2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
   return (
     <div className="basis-0 content-stretch flex grow items-center justify-between min-h-px min-w-px relative shrink-0" data-name="Content">
-      <Logo onClick={() => onNavigate?.('home')} />
+      <Frame1000003793 onClick={() => onNavigate?.('home')} />
       <Navigation1 onNavigate={onNavigate} />
     </div>
   );
@@ -104,7 +89,7 @@ function Content2({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'cont
 
 function Container1({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects') => void }) {
   return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-[1320px]" data-name="Container">
+    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full max-w-[1320px] px-[32px]" data-name="Container">
       <Content2 onNavigate={onNavigate} />
     </div>
   );
@@ -161,7 +146,7 @@ function HeadingAndSupportingText() {
 
 function Container2() {
   return (
-    <div className="absolute box-border content-stretch flex flex-col gap-[12px] items-start left-[80px] max-w-[1280px] px-[32px] py-0 top-[151px] w-[1280px]" data-name="Container">
+    <div className="absolute box-border content-stretch flex flex-col gap-[12px] items-start left-0 right-0 mx-auto max-w-[1280px] px-[32px] md:px-[64px] lg:px-[112px] py-0 top-[151px] w-full" data-name="Container">
       <HeadingAndSupportingText />
     </div>
   );
@@ -305,9 +290,9 @@ function Content3({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'cont
   );
 }
 
-function ListingSearchResultDesktop({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void }) {
+function ListingSearchResultDesktop({ onNavigate, projectId = '1' }: { onNavigate?: (page: string) => void; projectId?: string }) {
   return (
-    <div className="bg-white box-border content-stretch flex flex-col gap-[20px] h-[450px] items-start p-[16px] relative rounded-[16px] shrink-0 w-[389px] cursor-pointer hover:shadow-lg transition-shadow" data-name="_Listing search result desktop" onClick={() => onNavigate?.('projectDetail')}>
+    <div className="bg-white box-border content-stretch flex flex-col gap-[20px] h-[450px] items-start p-[16px] relative rounded-[16px] shrink-0 w-[389px] cursor-pointer hover:shadow-lg transition-shadow" data-name="_Listing search result desktop" onClick={() => onNavigate?.(`project-${projectId}`)}>
       <div aria-hidden="true" className="absolute border border-[#e9eaeb] border-solid inset-0 pointer-events-none rounded-[16px] shadow-[0px_1px_2px_0px_rgba(10,13,18,0.05)]" />
       <Image />
       <Content3 onNavigate={onNavigate} />
@@ -315,11 +300,11 @@ function ListingSearchResultDesktop({ onNavigate }: { onNavigate?: (page: 'home'
   );
 }
 
-function Frame1000003776({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void }) {
+function Frame1000003776({ onNavigate }: { onNavigate?: (page: string) => void }) {
   return (
     <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-[1216px]">
       {[...Array(3).keys()].map((_, i) => (
-        <ListingSearchResultDesktop key={i} onNavigate={onNavigate} />
+        <ListingSearchResultDesktop key={i} onNavigate={onNavigate} projectId={(i + 1).toString()} />
       ))}
     </div>
   );
@@ -355,9 +340,13 @@ function TextPadding7() {
   );
 }
 
-function ButtonsButton6() {
+function ButtonsButton6({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-white relative rounded-[8px] shrink-0" data-name="Buttons/Button">
+    <div
+      className="bg-white relative rounded-[8px] shrink-0 cursor-pointer hover:bg-gray-50 transition-colors"
+      data-name="Buttons/Button"
+      onClick={onClick}
+    >
       <div className="box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[inherit]">
         <ArrowLeft />
         <TextPadding7 />
@@ -368,10 +357,10 @@ function ButtonsButton6() {
   );
 }
 
-function ButtonWrap() {
+function ButtonWrap({ onPrevious }: { onPrevious?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex grow h-[36px] items-center min-h-px min-w-px relative shrink-0" data-name="Button wrap">
-      <ButtonsButton6 />
+      <ButtonsButton6 onClick={onPrevious} />
     </div>
   );
 }
@@ -522,9 +511,13 @@ function ArrowRight() {
   );
 }
 
-function ButtonsButton7() {
+function ButtonsButton7({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="bg-white relative rounded-[8px] shrink-0" data-name="Buttons/Button">
+    <div
+      className="bg-white relative rounded-[8px] shrink-0 cursor-pointer hover:bg-gray-50 transition-colors"
+      data-name="Buttons/Button"
+      onClick={onClick}
+    >
       <div className="box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip px-[12px] py-[8px] relative rounded-[inherit]">
         <TextPadding8 />
         <ArrowRight />
@@ -535,51 +528,51 @@ function ButtonsButton7() {
   );
 }
 
-function ButtonWrap1() {
+function ButtonWrap1({ onNext }: { onNext?: () => void }) {
   return (
     <div className="basis-0 content-stretch flex grow h-[36px] items-center justify-end min-h-px min-w-px relative shrink-0" data-name="Button wrap">
-      <ButtonsButton7 />
+      <ButtonsButton7 onClick={onNext} />
     </div>
   );
 }
 
-function Pagination() {
+function Pagination({ onPrevious, onNext }: { onPrevious?: () => void; onNext?: () => void }) {
   return (
     <div className="box-border content-stretch flex gap-[20px] items-center justify-center pb-0 pt-[20px] px-0 relative shrink-0 w-full" data-name="Pagination">
       <div aria-hidden="true" className="absolute border-[#e9eaeb] border-[1px_0px_0px] border-solid bottom-0 left-0 pointer-events-none right-0 top-[-1px]" />
-      <ButtonWrap />
+      <ButtonWrap onPrevious={onPrevious} />
       <PaginationNumbers />
-      <ButtonWrap1 />
+      <ButtonWrap1 onNext={onNext} />
     </div>
   );
 }
 
-function Container3({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void }) {
+function Container3({ onNavigate, onPreviousPage, onNextPage }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void; onPreviousPage?: () => void; onNextPage?: () => void }) {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Container">
       <div className="max-w-inherit size-full">
         <div className="box-border content-stretch flex flex-col gap-[48px] items-start max-w-inherit px-[32px] py-0 relative w-full">
           <Content12 onNavigate={onNavigate} />
-          <Pagination />
+          <Pagination onPrevious={onPreviousPage} onNext={onNextPage} />
         </div>
       </div>
     </div>
   );
 }
 
-function Section({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void }) {
+function Section({ onNavigate, onPreviousPage, onNextPage }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void; onPreviousPage?: () => void; onNextPage?: () => void }) {
   return (
     <div className="box-border content-stretch flex flex-col gap-[64px] items-center px-0 py-[96px] relative shrink-0 w-full" data-name="Section">
-      <Container3 onNavigate={onNavigate} />
+      <Container3 onNavigate={onNavigate} onPreviousPage={onPreviousPage} onNextPage={onNextPage} />
     </div>
   );
 }
 
-function BlogPageHeader({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void }) {
+function BlogPageHeader({ onNavigate, onPreviousPage, onNextPage }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail') => void; onPreviousPage?: () => void; onNextPage?: () => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col items-center overflow-clip relative shrink-0 w-full z-[6]" data-name="Blog page header">
       <HeroHeaderSection onNavigate={onNavigate} />
-      <Section onNavigate={onNavigate} />
+      <Section onNavigate={onNavigate} onPreviousPage={onPreviousPage} onNextPage={onNextPage} />
     </div>
   );
 }
@@ -1006,10 +999,10 @@ function Footer({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contac
   );
 }
 
-export default function Desktop({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void }) {
+export default function Desktop({ onNavigate, onPreviousPage, onNextPage }: { onNavigate?: (page: 'home' | 'about' | 'contact' | 'projects' | 'projectDetail' | 'blog' | 'privacyPolicy' | 'termsOfService' | 'cookiesPolicy') => void; onPreviousPage?: () => void; onNextPage?: () => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col isolate items-center relative size-full" data-name="Desktop">
-      <BlogPageHeader onNavigate={onNavigate} />
+      <BlogPageHeader onNavigate={onNavigate} onPreviousPage={onPreviousPage} onNextPage={onNextPage} />
       <SectionDivider />
       <SectionDivider1 />
       <Footer onNavigate={onNavigate} />

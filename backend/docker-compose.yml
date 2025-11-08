@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: havencommunities_db
+    environment:
+      POSTGRES_USER: havencommunities
+      POSTGRES_PASSWORD: devpassword123
+      POSTGRES_DB: havencommunities
+      POSTGRES_INITDB_ARGS: "-c timezone=UTC"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    networks:
+      - havencommunities_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U havencommunities -d havencommunities"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Adminer (Database Management UI)
+  adminer:
+    image: adminer:latest
+    container_name: havencommunities_adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - havencommunities_network
+
+  # Go API Server
+  api:
+    build: .
+    container_name: havencommunities_api
+    ports:
+      - "8101:8101"
+    environment:
+      PORT: 8101
+      ENV: development
+      SUPABASE_URL: ${SUPABASE_URL:-http://localhost:8000}
+      SUPABASE_KEY: ${SUPABASE_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-in-production}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
+      DATABASE_URL: postgres://havencommunities:devpassword123@postgres:5432/havencommunities
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - havencommunities_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8101/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  havencommunities_network:
+    driver: bridge
+
+# Start with: docker-compose up -d
+# View logs: docker-compose logs -f api
+# Stop: docker-compose down
+# Access Adminer: http://localhost:8080
+# Server: http://localhost:8101
+# Health check: http://localhost:8101/health
